@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <p>{{ count }}</p>
+    <p>
+      <button @click="increment">+</button>
+      <button @click="decrement">-</button>
+    </p>
   </div>
 </template>
 
@@ -30,3 +30,22 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>
+
+<script>
+import store from "./store";
+export default {
+  computed: {
+    count() {
+      return store.state.count;
+    },
+  },
+  methods: {
+    increment() {
+      store.commit("increment");
+    },
+    decrement() {
+      store.commit("decrement");
+    },
+  },
+};
+</script>
